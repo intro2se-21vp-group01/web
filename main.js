@@ -68,4 +68,45 @@
 
 
 
+// sticky header
+$(window).on("scroll", function (){
+  var scroll = $(window).scrollTop();
+  if(scroll < 100){
+    $(".sticky-header").removeClass("sticky");
+  }
+  else{
+    $(".sticky-header").addClass("sticky");
+  }
+});
+
+function dataBackgroundImage(){
+$("[data-bgimg]").each(function(){
+  var bgImgUrl = $(this).data("bgimg");
+  $(this).css({
+    "background-image": "URL("+ bgImgUrl +")",
+  });
+});
+}
+
+$(window).on("load",function(){
+  dataBackgroundImage();
+});
+
+//slider active
+$(".slider_area").owlCarousel({
+  animateOut : "fadeOut",
+  autoplay: true,
+  loop: true,
+  nav: true,
+  autoplay: false,
+  autouplayTimeOut: 5000,
+  items: 1,
+  dots: false,
+  navTest: [
+    '<i class="fa fa-arrow-right"></i>',
+    '<i class="fa fa-arrow-left"></i>',
+  ],
+});
+
+
 })(jQuery);
